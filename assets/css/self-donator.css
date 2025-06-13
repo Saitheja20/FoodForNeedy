@@ -1,0 +1,314 @@
+/* Self-Donator Specific Styles */
+
+/* Self-Donator Dashboard */
+.self-donator-dashboard-header {
+    background-color: #dc2626; /* red-600 */
+    color: #ffffff;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+  }
+  
+  .self-donator-dashboard-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+  
+  .self-donator-stat-item {
+    text-align: center;
+  }
+  
+  .self-donator-stat-value {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  .self-donator-stat-label {
+    font-size: 14px;
+  }
+  
+  /* Direct Donation Button */
+  .direct-donation-btn {
+    background-color: #dc2626; /* red-600 */
+    color: #ffffff;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .direct-donation-btn:hover {
+    background-color: #b91c1c; /* red-700 */
+  }
+  
+  .direct-donation-btn i {
+    margin-right: 8px;
+  }
+  
+  /* Nearby People in Need Section */
+  .people-in-need-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  
+  .person-card {
+    background-color: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    margin-bottom: 12px;
+  }
+  
+  .person-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .person-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  
+  .person-need {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  .person-location {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 4px;
+  }
+  
+  .person-location i {
+    margin-right: 4px;
+  }
+  
+  .help-now-btn {
+    background-color: #fee2e2; /* red-100 */
+    color: #dc2626; /* red-600 */
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Recent Direct Donations */
+  .recent-donations-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    margin-top: 24px;
+  }
+  
+  .donation-card {
+    background-color: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    display: flex;
+    margin-bottom: 12px;
+  }
+  
+  .donation-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    object-fit: cover;
+    margin-right: 12px;
+  }
+  
+  .donation-content {
+    flex-grow: 1;
+  }
+  
+  .donation-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  
+  .donation-recipient {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  .donation-meta {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+  }
+  
+  .donation-status {
+    background-color: #d1fae5; /* green-100 */
+    color: #065f46; /* green-800 */
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  
+  .donation-time {
+    font-size: 12px;
+    color: #6b7280;
+    margin-left: 8px;
+  }
+  
+  /* Direct Donation Form */
+  .form-container {
+    padding: 16px;
+    padding-bottom: 80px;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 4px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+  }
+  
+  .form-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+  }
+  
+  .form-flex {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .form-flex > * {
+    flex: 1;
+  }
+  
+  .location-picker {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    background-color: #f9fafb;
+  }
+  
+  .location-picker i {
+    color: #6b7280;
+    margin-right: 8px;
+  }
+  
+  .photo-upload {
+    border: 2px dashed #d1d5db;
+    border-radius: 4px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .photo-upload i {
+    color: #9ca3af;
+    font-size: 40px;
+    margin-bottom: 8px;
+  }
+  
+  .photo-upload-text {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  .form-textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .direct-donation-submit-btn {
+    background-color: #dc2626; /* red-600 */
+    color: #ffffff;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .direct-donation-submit-btn:hover {
+    background-color: #b91c1c; /* red-700 */
+  }
+  
+  /* Certificates & Badge Section */
+  .badges-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .badges-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  
+  .badges-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .badge-icon {
+    background-color: #fee2e2; /* red-100 */
+    color: #dc2626; /* red-600 */
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+  
+  .badge-name {
+    font-size: 12px;
+  }

@@ -1,0 +1,196 @@
+/* Authentication related styles */
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1.5rem;
+    background-color: var(--light-gray);
+}
+
+.auth-logo {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.auth-logo h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+
+.auth-logo p {
+    color: var(--dark-gray);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 24rem;
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+}
+
+.auth-card h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    /* gap: 1rem; */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--dark-gray);
+    margin-bottom: 0.25rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--medium-gray);
+    border-radius: 0.375rem;
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.auth-btn {
+    width: 100%;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 0.625rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.auth-btn:hover {
+    background-color: #2563eb;
+}
+
+.auth-footer {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.auth-footer p {
+    font-size: 0.875rem;
+    color: var(--dark-gray);
+}
+
+.auth-link {
+    color: var(--primary-blue);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+/* Role selection screen */
+.role-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1.5rem;
+    background-color: var(--light-gray);
+}
+
+.role-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.role-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    max-width: 42rem;
+}
+
+.role-card {
+    background-color: var(--white);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+}
+
+.role-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.role-icon {
+    margin-bottom: 0.75rem;
+}
+
+.role-title {
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin-bottom: 0.25rem;
+}
+
+.role-description {
+    font-size: 0.875rem;
+    color: var(--dark-gray);
+}
+
+/* Donor role */
+.donor-icon {
+    color: var(--primary-blue);
+}
+
+/* Volunteer role */
+.volunteer-icon {
+    color: var(--primary-green);
+}
+
+/* NGO role */
+.ngo-icon {
+    color: var(--primary-amber);
+}
+
+/* Self Donator role */
+.self-donator-icon {
+    color: var(--primary-red);
+}
+
+@media (min-width: 768px) {
+    .role-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

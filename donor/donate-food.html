@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Food - FoodForNeedy</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/donor.css">
+    <script src="../assets/js/api.js" defer></script>
+    <script src="../assets/js/donor.js" defer></script>
+    <script src="../assets/js/map.js" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Side Navigation -->
+        <nav class="side-nav" id="sideNav">
+            <div class="nav-header">
+                <img src="../assets/images/logo.png" alt="FoodForNeedy Logo" class="nav-logo">
+                <h2>FoodForNeedy</h2>
+                <p>Donor Dashboard</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li class="active"><a href="donate-food.html"><i class="fas fa-box"></i> Donate Food</a></li>
+                <li><a href="my-donations.html"><i class="fas fa-history"></i> My Donations</a></li>
+                <li><a href="certificates.html"><i class="fas fa-award"></i> Certificates</a></li>
+                <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="../auth/login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation -->
+            <header class="top-nav">
+                <button id="menuToggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1>Donate Food</h1>
+                <div class="user-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="user-profile">
+                        <img src="../assets/images/placeholder.png" alt="User" class="user-avatar">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Donation Form -->
+            <div class="dashboard-content">
+                <section class="donation-form-container">
+                    <form id="donationForm" class="donation-form">
+                        <div class="form-group">
+                            <label for="foodType">Food Type</label>
+                            <select id="foodType" name="foodType" required>
+                                <option value="">Select food type</option>
+                                <option value="cooked">Cooked Food</option>
+                                <option value="packaged">Packaged Food</option>
+                                <option value="produce">Fresh Produce</option>
+                                <option value="bakery">Bakery Items</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group quantity-group">
+                            <label for="quantity">Quantity</label>
+                            <div class="quantity-inputs">
+                                <input type="number" id="quantityAmount" name="quantityAmount" placeholder="Amount" min="1" required>
+                                <select id="quantityUnit" name="quantityUnit" required>
+                                    <option value="meals">Meals</option>
+                                    <option value="kg">Kg</option>
+                                    <option value="boxes">Boxes</option>
+                                    <option value="packets">Packets</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bestBefore">Best Before</label>
+                            <input type="date" id="bestBefore" name="bestBefore" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pickupLocation">Pickup Location</label>
+                            <div class="location-input">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" id="pickupLocation" name="pickupLocation" placeholder="Current Location" value="Current Location" readonly>
+                                <button type="button" id="changeLocation" class="location-btn">Change</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Add Photos</label>
+                            <div class="photo-upload-area" id="photoUpload">
+                                <i class="fas fa-camera"></i>
+                                <p>Tap to upload food photos</p>
+                                <input type="file" id="foodPhotos" name="foodPhotos" accept="image/*" multiple class="hidden-input">
+                            </div>
+                            <div class="photo-preview" id="photoPreview"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="notes">Additional Notes</label>
+                            <textarea id="notes" name="notes" rows="3" placeholder="Any allergies, storage instructions, etc."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Submit Donation</button>
+                    </form>
+                </section>
+            </div>
+
+            <!-- Bottom Navigation (Mobile) -->
+            <nav class="bottom-nav">
+                <a href="dashboard.html" class="bottom-nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="my-donations.html" class="bottom-nav-item">
+                    <i class="fas fa-box"></i>
+                    <span>Donations</span>
+                </a>
+                <a href="#" class="bottom-nav-item">
+                    <i class="fas fa-search"></i>
+                    <span>Explore</span>
+                </a>
+                <a href="certificates.html" class="bottom-nav-item">
+                    <i class="fas fa-award"></i>
+                    <span>Badges</span>
+                </a>
+            </nav>
+        </main>
+    </div>
+
+    <script>
+        // Toggle side navigation
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sideNav').classList.toggle('open');
+        });
+
+        // Photo upload functionality
+        document.getElementById('photoUpload').addEventListener('click', function() {
+            document.getElementById('foodPhotos').click();
+        });
+
+        document.getElementById('foodPhotos').addEventListener('change', function(e) {
+            const preview = document.getElementById('photoPreview');
+            preview.innerHTML = '';
+            
+            if (this.files) {
+                Array.from(this.files).forEach(file => {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'preview-image-container';
+                        
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'preview-image';
+                        
+                        const removeBtn = document.createElement('button');
+                        removeBtn.className = 'remove-image';
+                        removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                        removeBtn.onclick = function() {
+                            imgContainer.remove();
+                        };
+                        
+                        imgContainer.appendChild(img);
+                        imgContainer.appendChild(removeBtn);
+                        preview.appendChild(imgContainer);
+                    };
+                    
+                    reader.readAsDataURL(file);
+                });
+            }
+        });
+
+        // Form submission
+        document.getElementById('donationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, we would process the form data and send to server
+            window.location.href = '../common/donation-success.html';
+        });
+    </script>
+</body>
+</html>

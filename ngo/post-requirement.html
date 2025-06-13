@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donate Food</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2563eb;
+      color: white;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .flex-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .location-box {
+      display: flex;
+      align-items: center;
+      background-color: #f1f5f9;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    .location-box::before {
+      content: "📍";
+      margin-right: 8px;
+      font-size: 18px;
+    }
+
+    .photo-upload {
+      border: 2px dashed #ccc;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .photo-upload::before {
+      content: "📷";
+      display: block;
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #999;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      margin-top: 30px;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      width: 100%;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background-color: #1e40af;
+    }
+
+    @media (max-width: 600px) {
+      .flex-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>Donate Food</header>
+
+  <div class="container">
+    <form>
+      <label for="foodType">Food Type</label>
+      <select id="foodType" required>
+        <option value="">Select food type</option>
+        <option>Cooked Food</option>
+        <option>Packaged Food</option>
+        <option>Fresh Produce</option>
+        <option>Bakery Items</option>
+        <option>Other</option>
+      </select>
+
+      <label>Quantity</label>
+      <div class="flex-group">
+        <input type="number" placeholder="Amount" required />
+        <select>
+          <option>Meals</option>
+          <option>Kg</option>
+          <option>Boxes</option>
+          <option>Packets</option>
+        </select>
+      </div>
+
+      <label for="bestBefore">Best Before</label>
+      <input type="date" id="bestBefore" required />
+
+      <label>Pickup Location</label>
+      <div class="location-box">Use Current Location</div>
+
+      <label>Add Photo</label>
+      <div class="photo-upload">Tap to upload food photo</div>
+
+      <label for="notes">Additional Notes</label>
+      <textarea id="notes" placeholder="Any allergies, storage instructions, etc."></textarea>
+
+      <button type="submit">Submit Donation</button>
+    </form>
+  </div>
+
+</body>
+</html>

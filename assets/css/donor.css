@@ -1,0 +1,464 @@
+/* 
+* Donor-specific styles
+* FoodForNeedy Application 
+*/
+
+/* Donor Dashboard */
+.donor-dashboard-container {
+    background-color: #f9fafb;
+    min-height: 100vh;
+  }
+  
+  .donor-impact-summary {
+    background-color: #2563eb; /* Blue-600 */
+    color: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  .donor-impact-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+  }
+  
+  .donor-stat {
+    text-align: center;
+  }
+  
+  .donor-stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .donor-stat-label {
+    font-size: 0.875rem;
+  }
+  
+  .donate-food-button {
+    background-color: #2563eb; /* Blue-600 */
+    color: white;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .donate-food-button:hover {
+    background-color: #1d4ed8; /* Blue-700 */
+  }
+  
+  .donate-food-button i {
+    margin-right: 0.5rem;
+  }
+  
+  /* Food Request Item */
+  .food-request-item {
+    background-color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    margin-bottom: 0.75rem;
+  }
+  
+  .food-request-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .food-request-org {
+    font-weight: 600;
+  }
+  
+  .food-request-type {
+    font-size: 0.875rem;
+    color: #4b5563; /* Gray-600 */
+  }
+  
+  .food-request-location {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #6b7280; /* Gray-500 */
+    margin-top: 0.25rem;
+  }
+  
+  .food-request-location i {
+    margin-right: 0.25rem;
+  }
+  
+  .respond-button {
+    background-color: #dbeafe; /* Blue-100 */
+    color: #2563eb; /* Blue-600 */
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Donation Form */
+  .donation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151; /* Gray-700 */
+    margin-bottom: 0.25rem;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db; /* Gray-300 */
+    border-radius: 0.375rem;
+    font-size: 1rem;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .form-row .form-control {
+    flex: 1;
+  }
+  
+  .location-picker {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db; /* Gray-300 */
+    border-radius: 0.375rem;
+    background-color: #f9fafb; /* Gray-50 */
+  }
+  
+  .location-picker i {
+    color: #6b7280; /* Gray-500 */
+    margin-right: 0.5rem;
+  }
+  
+  .photo-upload {
+    border: 2px dashed #d1d5db; /* Gray-300 */
+    border-radius: 0.375rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .photo-upload i {
+    color: #9ca3af; /* Gray-400 */
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+  }
+  
+  .photo-upload-text {
+    font-size: 0.875rem;
+    color: #6b7280; /* Gray-500 */
+  }
+  
+  /* My Donations */
+  .donations-summary {
+    background-color: #f3f4f6; /* Gray-100 */
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .donation-history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  
+  .filter-button {
+    font-size: 0.875rem;
+    color: #2563eb; /* Blue-600 */
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .filter-button i {
+    margin-right: 0.25rem;
+  }
+  
+  .donation-item {
+    background-color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    margin-bottom: 0.75rem;
+    display: flex;
+  }
+  
+  .donation-image {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.25rem;
+    object-fit: cover;
+    margin-right: 0.75rem;
+  }
+  
+  .donation-details {
+    flex: 1;
+  }
+  
+  .donation-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .donation-type {
+    font-weight: 600;
+  }
+  
+  .donation-status {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+  
+  .status-available {
+    background-color: #d1fae5; /* Green-100 */
+    color: #065f46; /* Green-800 */
+  }
+  
+  .status-assigned {
+    background-color: #dbeafe; /* Blue-100 */
+    color: #1e40af; /* Blue-800 */
+  }
+  
+  .donation-quantity {
+    font-size: 0.875rem;
+    color: #4b5563; /* Gray-600 */
+  }
+  
+  .donation-meta {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+    color: #6b7280; /* Gray-500 */
+    margin-top: 0.25rem;
+  }
+  
+  .donation-meta > div {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+  }
+  
+  .donation-meta i {
+    margin-right: 0.25rem;
+  }
+  
+  /* Certificates & Badges */
+  .badge-container {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .badges-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .badge-icon {
+    background-color: #fef3c7; /* Yellow-100 */
+    border-radius: 9999px;
+    padding: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .badge-icon.blue {
+    background-color: #dbeafe; /* Blue-100 */
+  }
+  
+  .badge-icon.green {
+    background-color: #d1fae5; /* Green-100 */
+  }
+  
+  .badge-icon i {
+    font-size: 2rem;
+  }
+  
+  .badge-icon i.yellow {
+    color: #d97706; /* Yellow-600 */
+  }
+  
+  .badge-icon i.blue {
+    color: #2563eb; /* Blue-600 */
+  }
+  
+  .badge-icon i.green {
+    color: #059669; /* Green-600 */
+  }
+  
+  .badge-name {
+    font-size: 0.75rem;
+  }
+  
+  .certificate-item {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .certificate-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .certificate-title {
+    font-weight: 600;
+  }
+  
+  .certificate-subtitle {
+    font-size: 0.875rem;
+    color: #4b5563; /* Gray-600 */
+  }
+  
+  .certificate-meta {
+    font-size: 0.75rem;
+    color: #6b7280; /* Gray-500 */
+    margin-top: 0.25rem;
+  }
+  
+  .view-certificate {
+    display: flex;
+    align-items: center;
+    color: #2563eb; /* Blue-600 */
+    font-size: 0.875rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .view-certificate i {
+    margin-right: 0.25rem;
+  }
+  
+  /* Success screen */
+  .success-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    height: 100%;
+    text-align: center;
+  }
+  
+  .success-icon {
+    background-color: #d1fae5; /* Green-100 */
+    border-radius: 9999px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-size: 4rem;
+    color: #059669; /* Green-600 */
+  }
+  
+  .success-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  
+  .success-message {
+    color: #4b5563; /* Gray-600 */
+    margin-bottom: 1.5rem;
+  }
+  
+  .achievement-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    width: 100%;
+    max-width: 20rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .achievement-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .achievement-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .achievement-icon {
+    color: #fbbf24; /* Yellow-500 */
+    font-size: 2.5rem;
+    margin-right: 0.75rem;
+  }
+  
+  .achievement-name {
+    font-weight: 500;
+  }
+  
+  .achievement-detail {
+    font-size: 0.875rem;
+    color: #4b5563; /* Gray-600 */
+  }
+  
+  .primary-button {
+    background-color: #2563eb; /* Blue-600 */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    max-width: 20rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .secondary-button {
+    color: #2563eb; /* Blue-600 */
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }

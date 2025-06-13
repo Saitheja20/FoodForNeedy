@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodForNeedy - Connecting food donors with those in need</title>
+    <link rel="stylesheet" href="assets/css/common.css">
+    <script src="assets/js/api.js" defer></script>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    header.hero {
+        background: linear-gradient(to right, #6dd5ed, #2193b0);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+
+    .hero .tagline {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #f0f0f0;
+    }
+
+    .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #ffffff;
+        color: #2193b0;
+        font-weight: bold;
+    }
+
+    .btn-primary:hover {
+        background-color: #f1f1f1;
+    }
+
+    .btn-secondary {
+        background-color: #2193b0;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #1a7a94;
+    }
+
+    section.features,
+    section.impact {
+        padding: 60px 20px;
+        background-color: #fff;
+        text-align: center;
+    }
+
+    section.features h2,
+    section.impact h2 {
+        font-size: 32px;
+        margin-bottom: 40px;
+        color: #2193b0;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .feature-card {
+        background-color: #f2f9fc;
+        border-radius: 10px;
+        padding: 30px 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .feature-card h3 {
+        margin-top: 15px;
+        color: #1c7ca6;
+    }
+
+    .icon {
+        width: 60px;
+        height: 60px;
+        margin: auto;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .donor-icon {
+        background-image: url('assets/icons/donor.png');
+    }
+
+    .volunteer-icon {
+        background-image: url('assets/icons/volunteer.png');
+    }
+
+    .ngo-icon {
+        background-image: url('assets/icons/ngo.png');
+    }
+
+    .direct-icon {
+        background-image: url('assets/icons/direct.png');
+    }
+
+    .impact .stats {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .stat-item {
+        background-color: #e1f5fe;
+        padding: 20px;
+        border-radius: 8px;
+        width: 180px;
+    }
+
+    .stat-item .number {
+        font-size: 28px;
+        font-weight: bold;
+        color: #0078a4;
+    }
+
+    .stat-item .label {
+        font-size: 14px;
+        color: #444;
+    }
+
+    footer {
+        background-color: #003f5c;
+        color: #fff;
+        padding: 40px 20px;
+    }
+
+    .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+    }
+
+    .footer-logo {
+        width: 80px;
+        margin-bottom: 10px;
+    }
+
+    .footer-content h4 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: #fff;
+    }
+
+    .footer-content p,
+    .footer-content a {
+        font-size: 14px;
+        color: #ccc;
+    }
+
+    .footer-content ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-content li {
+        margin-bottom: 8px;
+    }
+
+    .footer-content a:hover {
+        color: #fff;
+        text-decoration: underline;
+    }
+
+    .social-icons {
+        margin-top: 10px;
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 30px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+        padding-top: 20px;
+        font-size: 14px;
+        color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+        .footer-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .cta-buttons {
+            flex-direction: column;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <h1>FoodForNeedy</h1>
+            <p class="tagline">Connecting food donors with those in need</p>
+            <div class="cta-buttons">
+                <a href="auth/login.html" class="btn btn-primary">Login</a>
+                <a href="auth/register.html" class="btn btn-secondary">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon donor-icon"></div>
+                    <h3>Donors</h3>
+                    <p>Restaurants, cafes, and individuals with excess food can donate easily</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon volunteer-icon"></div>
+                    <h3>Volunteers</h3>
+                    <p>Help collect and deliver food to those who need it most</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon ngo-icon"></div>
+                    <h3>NGOs & Old Age Homes</h3>
+                    <p>Request and receive food donations for distribution</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon direct-icon"></div>
+                    <h3>Self Donators</h3>
+                    <p>Donate directly to people in need in your local area</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="impact">
+        <div class="container">
+            <h2>Our Impact</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="number">5,000+</span>
+                    <span class="label">Meals Donated</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">300+</span>
+                    <span class="label">Active Donors</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">150+</span>
+                    <span class="label">Volunteers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">50+</span>
+                    <span class="label">NGO Partners</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo-section">
+                    <img src="assets/images/logo.png" alt="FoodForNeedy Logo" class="footer-logo">
+                    <p>Making a difference, one meal at a time</p>
+                </div>
+                <div class="links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">Join As Volunteer</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="contact">
+                    <h4>Contact</h4>
+                    <p>Email: info@foodforneedy.org</p>
+                    <p>Phone: (123) 456-7890</p>
+                    <div class="social-icons">
+                        <!-- Social media icons would go here -->
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 FoodForNeedy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

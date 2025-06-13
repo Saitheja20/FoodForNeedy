@@ -1,0 +1,329 @@
+/* NGO Specific Styles */
+
+/* NGO Dashboard */
+.ngo-dashboard-header {
+    background-color: #d97706; /* amber-600 */
+    color: #ffffff;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+  }
+  
+  .ngo-dashboard-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+  
+  .ngo-stat-item {
+    text-align: center;
+  }
+  
+  .ngo-stat-value {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  .ngo-stat-label {
+    font-size: 14px;
+  }
+  
+  /* Post Requirement Button */
+  .post-requirement-btn {
+    background-color: #d97706; /* amber-600 */
+    color: #ffffff;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .post-requirement-btn:hover {
+    background-color: #b45309; /* amber-700 */
+  }
+  
+  .post-requirement-btn i {
+    margin-right: 8px;
+  }
+  
+  /* Incoming Donations */
+  .donation-card {
+    background-color: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    display: flex;
+    margin-bottom: 12px;
+  }
+  
+  .donation-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    object-fit: cover;
+    margin-right: 12px;
+  }
+  
+  .donation-content {
+    flex-grow: 1;
+  }
+  
+  .donation-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  
+  .donation-quantity {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  .donation-location {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #6b7280;
+    margin-top: 4px;
+  }
+  
+  .donation-location i {
+    margin-right: 4px;
+  }
+  
+  .donation-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .action-btn {
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .accept-btn {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+  
+  .decline-btn {
+    background-color: #fee2e2;
+    color: #b91c1c;
+  }
+  
+  /* Post Requirement Form */
+  .form-container {
+    padding: 16px;
+    padding-bottom: 80px;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 4px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+  }
+  
+  .form-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+  }
+  
+  .form-flex {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .form-flex > * {
+    flex: 1;
+  }
+  
+  .form-textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .submit-btn {
+    background-color: #d97706; /* amber-600 */
+    color: #ffffff;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: #b45309; /* amber-700 */
+  }
+  
+  /* NGO Profile */
+  .profile-section {
+    background-color: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #d97706;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin-right: 16px;
+  }
+  
+  .profile-info h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  
+  .profile-info p {
+    color: #6b7280;
+    font-size: 14px;
+  }
+  
+  .profile-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 16px;
+  }
+  
+  .profile-stat {
+    text-align: center;
+  }
+  
+  .profile-stat-value {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .profile-stat-label {
+    font-size: 12px;
+    color: #6b7280;
+  }
+  
+  .profile-detail {
+    display: flex;
+    margin-bottom: 8px;
+  }
+  
+  .profile-detail i {
+    width: 20px;
+    margin-right: 8px;
+    color: #6b7280;
+  }
+  
+  .edit-profile-btn {
+    background-color: #e5e7eb;
+    color: #374151;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    margin-top: 16px;
+  }
+  
+  /* Request History */
+  .request-history {
+    background-color: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .history-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  
+  .request-item {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .request-item:last-child {
+    border-bottom: none;
+  }
+  
+  .request-details h4 {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  
+  .request-details p {
+    font-size: 14px;
+    color: #6b7280;
+  }
+  
+  .request-status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  .status-pending {
+    background-color: #fef3c7;
+    color: #92400e;
+  }
+  
+  .status-fulfilled {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+  
+  .status-expired {
+    background-color: #fee2e2;
+    color: #b91c1c;
+  }

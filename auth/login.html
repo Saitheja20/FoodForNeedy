@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - FoodForNeedy</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/auth.css">
+    <script src="../assets/js/auth.js" defer></script>
+
+    <style>
+    /* Reset some default styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+       /* background: linear-gradient(to right, #6dd5ed, #2193b0); */
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+    }
+    h1{
+        color: #2563EB;
+    }
+
+    .auth-container {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+    }
+
+    .auth-card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        text-align: center;
+    }
+
+    .auth-header img.auth-logo {
+        max-width: 80px;
+        margin-bottom: 10px;
+    }
+
+    .auth-header h1 {
+        font-size: 24px;
+        margin-bottom: 5px;
+        color: #2193b0;
+    }
+
+    .tagline {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .auth-form h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: border-color 0.3s;
+    }
+
+    .form-group input:focus {
+        border-color: #2193b0;
+        outline: none;
+    }
+
+    .form-action {
+        margin-top: 20px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+        transition: background 0.3s;
+    }
+
+    .btn-primary {
+        background-color: #2563EB;
+        color: #fff;
+    }
+
+    .btn-primary:hover {
+        background-color: #1b7a99;
+    }
+
+    .btn-block {
+        width: 100%;    
+    }
+
+    .auth-links {
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    .auth-links a {
+        color: #2193b0;
+        text-decoration: none;
+    }
+
+    .auth-links a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+        .auth-card {
+            padding: 20px;
+        }
+
+        .auth-header h1 {
+            font-size: 20px;
+        }
+
+        .auth-form h2 {
+            font-size: 18px;
+        }
+    }
+</style>
+
+</head>
+<body>
+    
+    <div class="auth-container">
+         <h1>FoodForNeedy</h1>
+                <p class="tagline">Connecting food donors with those in need</p>
+        <div class="auth-card">
+            <div class="auth-header">
+                <!-- <img src="../assets/images/logo.png" alt="FoodForNeedy Logo" class="auth-logo"> -->
+               
+            </div>
+            
+            <div class="auth-form">
+                <h2>Log In</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Your password" required>
+                    </div>
+                    <div class="form-action">
+                        <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                    </div>
+                </form>
+                <div class="auth-links">
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                    <p>Don't have an account? <a href="register.html" class="signup-link">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Normally would handle authentication here
+            // For demo purposes, redirecting to role selection
+            window.location.href = 'role-select.html';
+        });
+    </script>
+</body>
+</html>

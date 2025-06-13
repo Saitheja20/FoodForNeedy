@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Food Request Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7f8fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 1em;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .location-btn {
+      background-color: #007bff;
+      margin-top: 10px;
+    }
+
+    .location-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .note {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Request Food Assistance</h1>
+    <form id="foodRequestForm">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="John Doe" required />
+
+      <label for="contact">Phone Number</label>
+      <input type="tel" id="contact" name="contact" placeholder="123-456-7890" required />
+
+      <label for="people">Number of People</label>
+      <input type="number" id="people" name="people" placeholder="e.g., 4" required />
+
+      <label for="meal_type">Meal Preference</label>
+      <select id="meal_type" name="meal_type" required>
+        <option value="">Select an option</option>
+        <option value="veg">Vegetarian</option>
+        <option value="non-veg">Non-Vegetarian</option>
+        <option value="dry">Dry Ration</option>
+      </select>
+
+      <label for="address">Address or Nearby Landmark</label>
+      <textarea id="address" name="address" placeholder="123 Main St, near bus stop..." required></textarea>
+
+      <button type="button" class="location-btn" onclick="getLocation()">📍 Use My Location</button>
+
+      <input type="hidden" name="latitude" />
+      <input type="hidden" name="longitude" />
+
+      <button type="submit">Submit Food Request</button>
+      <p class="note">Your request will be sent to the nearest aid provider.</p>
+    </form>
+  </div>
+
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          document.querySelector('input[name="latitude"]').value = position.coords.latitude;
+          document.querySelector('input[name="longitude"]').value = position.coords.longitude;
+          alert("📍 Location captured successfully!");
+        }, () => {
+          alert("❌ Unable to retrieve your location.");
+        });
+      } else {
+        alert("❌ Geolocation is not supported by this browser.");
+      }
+    }
+
+    document.getElementById('foodRequestForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('✅ Your request has been submitted!');
+      // Add actual submission logic here (e.g., fetch or AJAX)
+    });
+  </script>
+
+</body>
+</html>
