@@ -494,6 +494,77 @@ body {
             margin: 0 auto;
             padding: 24px 16px 90px 16px;
         }
+        .sidebar {
+            width: 250px;
+            background: #1e3a8a;
+            color: white;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            z-index: 2000;
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+        }
+        .sidebar.open {
+            transform: translateX(0);
+        }
+        .sidebar .logo {
+            width: 100%;
+            max-width: 140px;
+            margin-bottom: 1rem;
+        }
+        .sidebar-header h1 {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .sidebar .user-info {
+            text-align: center;
+        }
+        .sidebar .user-avatar {
+            width: 60px;
+            border-radius: 50%;
+            margin: 10px auto;
+        }
+        .sidebar .user-role {
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+        .sidebar-nav ul {
+            list-style: none;
+        }
+        .sidebar-nav li {
+            margin: 10px 0;
+        }
+        .sidebar-nav a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        .sidebar-nav .active a {
+            background: #3749a3;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        /* Overlay for sidebar */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1999;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(30, 41, 59, 0.18);
+        }
+        .sidebar-overlay.active {
+            display: block;
+        }
+        /* Top Navigation */
         .top-nav {
             background: var(--white);
             box-shadow: var(--shadow);
@@ -510,6 +581,7 @@ body {
             font-size: 1.4rem;
             color: var(--primary);
             cursor: pointer;
+            z-index: 2001;
         }
         .top-nav-right {
             display: flex;
@@ -1046,7 +1118,7 @@ body {
 </head>
 <body>
     <!-- Sidebar/Menu -->
-    <!-- <div class="sidebar" id="sidebar">
+    <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <img src="./assets/images/logo.png" alt="FoodForNeedy Logo" class="logo">
             <h1>FoodForNeedy</h1>
@@ -1070,7 +1142,7 @@ body {
         <div class="sidebar-footer">
             <p>&copy; 2025 FoodForNeedy</p>
         </div>
-    </div> -->
+    </div>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -1415,5 +1487,11 @@ body {
 
 
     <script src="./assets/js/donor.js"></script>
+    <script>
+      // Menu toggle for sidebar
+      document.getElementById('menuToggle').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.toggle('open');
+      });
+    </script>
 </body>
 </html>

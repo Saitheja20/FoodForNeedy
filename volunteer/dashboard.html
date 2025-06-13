@@ -1,0 +1,1465 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Dashboard - FoodForNeedy</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/donor.css">
+    <script src="../assets/js/api.js" defer></script>
+    <script src="../assets/js/donor.js" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+       
+        <nav class="side-nav" id="sideNav">
+            <div class="nav-header">
+                <img src="../assets/images/logo.png" alt="FoodForNeedy Logo" class="nav-logo">
+                <h2>FoodForNeedy</h2>
+                <p>Donor Dashboard</p>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="donate-food.html"><i class="fas fa-box"></i> Donate Food</a></li>
+                <li><a href="my-donations.html"><i class="fas fa-history"></i> My Donations</a></li>
+                <li><a href="certificates.html"><i class="fas fa-award"></i> Certificates</a></li>
+                <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="../auth/login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+
+      
+        <main class="main-content">
+          
+            <header class="top-nav">
+                <button id="menuToggle" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1>Dashboard</h1>
+                <div class="user-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="user-profile">
+                        <img src="../assets/images/placeholder.png" alt="User" class="user-avatar">
+                    </div>
+                </div>
+            </header>
+
+          
+            <div class="dashboard-content">
+               
+                <section class="impact-stats blue-gradient">
+                    <h2>Your Impact</h2>
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Donations</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">47</span>
+                            <span class="stat-label">Meals</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">Badges</span>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section class="quick-action">
+                    <a href="donate-food.html" class="donate-btn">
+                        <i class="fas fa-box"></i> Donate Food
+                    </a>
+                </section>
+
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2>Nearby Food Requests</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="request-cards">
+                        <div class="request-card">
+                            <div class="request-info">
+                                <h3>Sunshine Home</h3>
+                                <p class="request-details">Any Food, 20 meals</p>
+                                <div class="location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>South District (3.1 km)</span>
+                                </div>
+                            </div>
+                            <button class="respond-btn">Respond</button>
+                        </div>
+                        <div class="request-card">
+                            <div class="request-info">
+                                <h3>Hope Center</h3>
+                                <p class="request-details">Vegetables, 5 kg</p>
+                                <div class="location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>West Area (1.7 km)</span>
+                                </div>
+                            </div>
+                            <button class="respond-btn">Respond</button>
+                        </div>
+                    </div>
+                </section>
+
+               
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2>Your Recent Donations</h2>
+                        <a href="my-donations.html" class="view-all">View All</a>
+                    </div>
+                    <div class="donation-cards">
+                        <div class="donation-card">
+                            <img src="../assets/images/placeholder.png" alt="Food" class="donation-img">
+                            <div class="donation-info">
+                                <h3>Cooked Food</h3>
+                                <p class="donation-details">5 meals</p>
+                                <div class="status-time">
+                                    <span class="status available">Available</span>
+                                    <span class="time">30 min ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="donation-card">
+                            <img src="../assets/images/placeholder.png" alt="Food" class="donation-img">
+                            <div class="donation-info">
+                                <h3>Packaged Food</h3>
+                                <p class="donation-details">10 packets</p>
+                                <div class="status-time">
+                                    <span class="status assigned">Assigned</span>
+                                    <span class="time">1 hour ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <nav class="bottom-nav">
+                <a href="dashboard.html" class="bottom-nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="my-donations.html" class="bottom-nav-item">
+                    <i class="fas fa-box"></i>
+                    <span>Donations</span>
+                </a>
+                <a href="#" class="bottom-nav-item">
+                    <i class="fas fa-search"></i>
+                    <span>Explore</span>
+                </a>
+                <a href="certificates.html" class="bottom-nav-item">
+                    <i class="fas fa-award"></i>
+                    <span>Badges</span>
+                </a>
+            </nav>
+        </main>
+    </div>
+
+    <script>
+    
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sideNav').classList.toggle('open');
+        });
+    </script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodForNeedy - Donor Dashboard</title>
+    <link rel="stylesheet" href="./assets/css/donor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- <style>
+        * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f7f9fc;
+  color: #333;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #1e3a8a;
+  color: white;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.sidebar .logo {
+  width: 100%;
+  max-width: 140px;
+  margin-bottom: 1rem;
+}
+
+.sidebar-header h1 {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.sidebar .user-info {
+  text-align: center;
+}
+
+.sidebar .user-avatar {
+  width: 60px;
+  border-radius: 50%;
+  margin: 10px auto;
+}
+
+.sidebar .user-role {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+}
+
+.sidebar-nav li {
+  margin: 10px 0;
+}
+
+.sidebar-nav a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.sidebar-nav .active a {
+  background: #3749a3;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Top Navigation */
+.top-nav {
+  background: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.top-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-avatar-small {
+  width: 30px;
+  border-radius: 50%;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 260px;
+  padding: 20px;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Impact Stats */
+.impact-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  padding: 12px;
+  border-radius: 50%;
+  color: white;
+  margin-right: 15px;
+}
+
+.stat-icon.blue { background: #3b82f6; }
+.stat-icon.green { background: #10b981; }
+.stat-icon.purple { background: #8b5cf6; }
+.stat-icon.orange { background: #f97316; }
+
+.stat-content h3 {
+  font-size: 1.3rem;
+}
+
+/* Donate Box */
+.donate-box {
+  background: #e0f2fe;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.donate-btn {
+  margin-top: 10px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Cards and Lists */
+.section-container {
+  margin-top: 30px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.view-all {
+  font-size: 0.9rem;
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.donations-list,
+.requirements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.donation-card,
+.requirement-card {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.donation-img img,
+.requirement-org img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.status {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-active { background: #d1fae5; color: #065f46; }
+.status-in-transit { background: #fef3c7; color: #92400e; }
+.status-delivered { background: #e0f2fe; color: #1e3a8a; }
+
+.requirement-org {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.badges-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.badge-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 150px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+}
+
+.badge-icon {
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 50%;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.badge-icon.gold { background: #f59e0b; }
+.badge-icon.silver { background: #9ca3af; }
+.badge-icon.bronze { background: #d97706; }
+
+/* Footer */
+.main-footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .main-content {
+    margin-left: 0;
+  }
+}
+    </style> -->
+
+    
+    <!-- Internal Responsive CSS -->
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #f1f5f9;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --gray: #6b7280;
+            --white: #fff;
+            --shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        html, body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: #f7f9fc;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px 16px 90px 16px;
+        }
+        .sidebar {
+            width: 250px;
+            background: #1e3a8a;
+            color: white;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            z-index: 2000;
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+        }
+        .sidebar.open {
+            transform: translateX(0);
+        }
+        .sidebar .logo {
+            width: 100%;
+            max-width: 140px;
+            margin-bottom: 1rem;
+        }
+        .sidebar-header h1 {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .sidebar .user-info {
+            text-align: center;
+        }
+        .sidebar .user-avatar {
+            width: 60px;
+            border-radius: 50%;
+            margin: 10px auto;
+        }
+        .sidebar .user-role {
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+        .sidebar-nav ul {
+            list-style: none;
+        }
+        .sidebar-nav li {
+            margin: 10px 0;
+        }
+        .sidebar-nav a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        .sidebar-nav .active a {
+            background: #3749a3;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        /* Overlay for sidebar */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1999;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(30, 41, 59, 0.18);
+        }
+        .sidebar-overlay.active {
+            display: block;
+        }
+        /* Top Navigation */
+        .top-nav {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--primary);
+            cursor: pointer;
+            z-index: 2001;
+        }
+        .top-nav-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .notification-icon {
+            position: relative;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        .notification-badge {
+            position: absolute;
+            top: -7px;
+            right: -7px;
+            background: var(--danger);
+            color: var(--white);
+            font-size: 0.7rem;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-weight: 600;
+        }
+        .user-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            cursor: pointer;
+        }
+        .user-avatar-small {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        .impact-stats {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            flex: 1 1 180px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            padding: 18px 20px;
+            min-width: 180px;
+            margin-bottom: 10px;
+        }
+        .stat-icon {
+            font-size: 1.7rem;
+            padding: 13px;
+            border-radius: 50%;
+            color: var(--white);
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stat-icon.blue { background: #3b82f6; }
+        .stat-icon.green { background: #10b981; }
+        .stat-icon.purple { background: #8b5cf6; }
+        .stat-icon.orange { background: #f59e0b; }
+        .stat-content h3 {
+            font-size: 1.4rem;
+            margin: 0 0 2px 0;
+        }
+        .donate-box {
+            background: #e0f2fe;
+            border-radius: 10px;
+            padding: 22px 18px;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .donate-btn {
+            margin-top: 12px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 11px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .donate-btn:hover {
+            background: #1742a7;
+        }
+        .section-container {
+            margin-top: 32px;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 13px;
+        }
+        .view-all {
+            font-size: 0.95rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .donations-list, .requirements-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .donation-card, .requirement-card {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 18px;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        .donation-img img, .requirement-org img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 6px;
+        }
+        .donation-img {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .status {
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            color: var(--white);
+        }
+        .status-active { background: var(--success); }
+        .status-in-transit { background: var(--accent); color: #fff; }
+        .status-delivered { background: var(--primary); }
+        .donation-details h3, .requirement-org h3 {
+            margin: 0 0 4px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .donation-details p, .requirement-details p {
+            margin: 0 0 2px 0;
+            font-size: 0.97rem;
+            color: var(--gray);
+        }
+        .donation-actions, .requirement-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+        .btn-outline, .btn-primary, .btn-secondary {
+            border: none;
+            border-radius: 5px;
+            padding: 8px 18px;
+            font-size: 0.97rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background: #1742a7;
+        }
+        .btn-secondary {
+            background: var(--gray);
+            color: var(--white);
+        }
+        .btn-secondary:hover {
+            background: #374151;
+        }
+        .urgent {
+            color: var(--danger);
+            font-weight: 700;
+        }
+        .badges-container {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        .badge-card {
+            background: var(--white);
+            padding: 15px 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 140px;
+            box-shadow: var(--shadow);
+            margin-bottom: 10px;
+        }
+        .badge-icon {
+            font-size: 1.6rem;
+            padding: 12px;
+            border-radius: 50%;
+            color: var(--white);
+            margin-bottom: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .badge-icon.gold { background: #f59e0b; }
+        .badge-icon.silver { background: #9ca3af; }
+        .badge-icon.bronze { background: #d97706; }
+        .main-footer {
+            text-align: center;
+            margin-top: 48px;
+            padding: 18px 0 0 0;
+            font-size: 0.97rem;
+            color: #888;
+        }
+        .footer-links {
+            margin-top: 7px;
+        }
+        .footer-links a {
+            margin: 0 10px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.97rem;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background: rgba(30, 41, 59, 0.12);
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            width: 95%;
+            max-width: 420px;
+            padding: 0;
+            animation: modalIn 0.2s;
+        }
+        @keyframes modalIn {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 22px 10px 22px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .modal-header h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--gray);
+            cursor: pointer;
+        }
+        .modal-body {
+            padding: 18px 22px 22px 22px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-row {
+            display: flex;
+            gap: 12px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        label {
+            display: block;
+            font-size: 0.97rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"], input[type="date"], select, textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1.2px solid #d1d5db;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 2px;
+            background: #f9fafb;
+        }
+        textarea {
+            min-height: 60px;
+            resize: vertical;
+        }
+        .location-input {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .location-input i {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        .btn-use-current {
+            background: var(--secondary);
+            color: var(--primary);
+            border: none;
+            border-radius: 5px;
+            padding: 6px 12px;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        .btn-use-current:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .photo-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .photo-upload input[type="file"] {
+            display: none;
+        }
+        .upload-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            padding: 18px 0;
+            width: 100%;
+            cursor: pointer;
+            color: var(--gray);
+            font-size: 1.2rem;
+        }
+        .upload-placeholder:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .preview-container img {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 8px;
+            margin-top: 8px;
+        }
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 18px;
+        }
+        .success-icon {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 10px;
+        }
+        .new-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 18px 0 10px 0;
+            justify-content: center;
+        }
+        .badge-info h4 {
+            margin: 0 0 2px 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .badge-info p {
+            margin: 0;
+            font-size: 0.97rem;
+            color: var(--gray);
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(30, 41, 59, 0.18);
+        }
+        .overlay.active { display: block; }
+        /* Mobile Bottom Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            background: var(--white);
+            box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+            z-index: 1003;
+            height: 62px;
+            border-radius: 18px 18px 0 0;
+            padding: 0 8px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .mobile-nav a {
+            flex: 1;
+            text-align: center;
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: color 0.2s;
+        }
+        .mobile-nav a.active, .mobile-nav a:hover {
+            color: var(--primary);
+        }
+        .donate-circle {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-top: -18px;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.18);
+            border: 3px solid var(--white);
+        }
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .main-content {
+                max-width: 100%;
+                padding: 18px 6px 90px 6px;
+            }
+            .impact-stats {
+                gap: 10px;
+            }
+            .stat-card {
+                min-width: 140px;
+                padding: 12px 10px;
+            }
+            .badge-card {
+                width: 110px;
+                padding: 10px 5px;
+            }
+        }
+        @media (max-width: 700px) {
+            .impact-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .stat-card {
+                width: 100%;
+                min-width: 0;
+            }
+            .badges-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .badge-card {
+                width: 100%;
+            }
+            .main-footer {
+                font-size: 0.92rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 10px 2px 80px 2px;
+            }
+            .top-nav {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 8px;
+            }
+            .page-title {
+                font-size: 1.3rem;
+            }
+            .donation-card, .requirement-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 10px 8px;
+            }
+            .donation-img img, .requirement-org img {
+                width: 54px;
+                height: 54px;
+            }
+            .modal-content {
+                max-width: 98vw;
+                padding: 0;
+            }
+        }
+        @media (max-width: 500px) {
+            .main-content {
+                padding-bottom: 70px;
+            }
+            .mobile-nav {
+                display: flex;
+            }
+            .main-footer {
+                margin-bottom: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar/Menu -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="./assets/images/logo.png" alt="FoodForNeedy Logo" class="logo">
+            <h1>FoodForNeedy</h1>
+        </div>
+        <div class="user-info">
+            <img src="./assets/images/user-avatar.png" alt="User Avatar" class="user-avatar">
+            <p>John Donor</p>
+            <span class="user-role">Donor</span>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active"><a href="#dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#donations"><i class="fas fa-box"></i> My Donations</a></li>
+                <li><a href="#requirements"><i class="fas fa-list"></i> Food Requests</a></li>
+                <li><a href="#certificates"><i class="fas fa-award"></i> Certificates</a></li>
+                <li><a href="#profile"><i class="fas fa-user"></i> Profile</a></li>
+                <li><a href="#settings"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p>&copy; 2025 FoodForNeedy</p>
+        </div>
+    </div>
+
+  <!-- Main Content -->
+<main class="main-content">
+    <!-- Top Navigation -->
+    <header class="top-nav">
+        <button id="menuToggle" class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="top-nav-right">
+            <div class="notification-icon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">2</span>
+            </div>
+            <div class="user-dropdown">
+                <img src="./assets/images/user-avatar.png" alt="User Avatar" class="user-avatar-small">
+                <span>Jane Volunteer</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="content-wrapper">
+        <h1 class="page-title">Volunteer Dashboard</h1>
+
+        <!-- Stats -->
+        <div class="impact-stats">
+            <div class="stat-card">
+                <div class="stat-icon blue">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>15</h3>
+                    <p>Tasks Completed</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon green">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>42 hrs</h3>
+                    <p>Volunteer Hours</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon purple">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>10</h3>
+                    <p>NGOs Helped</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon orange">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>4</h3>
+                    <p>Badges Earned</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="donate-box">
+            <h2>Ready to help again?</h2>
+            <button class="donate-btn" id="volunteerNowBtn">
+                <i class="fas fa-hands-helping"></i> Find Tasks Near You
+            </button>
+        </div>
+
+        <!-- Upcoming Tasks -->
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Upcoming Volunteer Tasks</h2>
+                <a href="#tasks" class="view-all">View All</a>
+            </div>
+            <div class="donations-list">
+                <div class="donation-card">
+                    <div class="donation-img">
+                        <img src="./assets/images/task1.jpg" alt="Task Image">
+                        <span class="status status-active">Today</span>
+                    </div>
+                    <div class="donation-details">
+                        <h3>Meal Pickup & Delivery</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Greenview Kitchen to Shelter</p>
+                        <p><i class="fas fa-clock"></i> 2:00 PM</p>
+                    </div>
+                    <div class="donation-actions">
+                        <button class="btn-outline"><i class="fas fa-eye"></i> View</button>
+                    </div>
+                </div>
+                <div class="donation-card">
+                    <div class="donation-img">
+                        <img src="./assets/images/task2.jpg" alt="Task Image">
+                        <span class="status status-upcoming">Tomorrow</span>
+                    </div>
+                    <div class="donation-details">
+                        <h3>Vegetable Sorting</h3>
+                        <p><i class="fas fa-apple-alt"></i> Community Food Bank</p>
+                        <p><i class="fas fa-clock"></i> 10:00 AM</p>
+                    </div>
+                    <div class="donation-actions">
+                        <button class="btn-outline"><i class="fas fa-eye"></i> View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Requests You Accepted -->
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Your Accepted Requests</h2>
+                <a href="#accepted" class="view-all">View All</a>
+            </div>
+            <div class="requirements-list">
+                <div class="requirement-card">
+                    <div class="requirement-org">
+                        <img src="./assets/images/ngo1.jpg" alt="NGO Logo">
+                        <h3>Helping Hands</h3>
+                    </div>
+                    <div class="requirement-details">
+                        <p><i class="fas fa-box"></i> Distribute food boxes</p>
+                        <p><i class="fas fa-calendar-alt"></i> June 16, 10 AM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> West End</p>
+                    </div>
+                    <div class="requirement-actions">
+                        <button class="btn-primary"><i class="fas fa-check"></i> Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Badges Section -->
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Your Badges</h2>
+                <a href="#badges" class="view-all">View All</a>
+            </div>
+            <div class="badges-container">
+                <div class="badge-card">
+                    <div class="badge-icon gold">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>First Volunteer</h3>
+                    <p>Completed your first task</p>
+                </div>
+                <div class="badge-card">
+                    <div class="badge-icon silver">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>40 Hours</h3>
+                    <p>Volunteered for 40+ hours</p>
+                </div>
+                <div class="badge-card">
+                    <div class="badge-icon bronze">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Weekly Hero</h3>
+                    <p>Volunteered every week for a month</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>&copy; 2025 FoodForNeedy. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+        </div>
+    </footer>
+</main>
+
+
+    <!-- Donation Modal -->
+    <div class="modal" id="donationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Donate Food</h2>
+                <button class="close-modal" id="closeModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="donationForm">
+                    <div class="form-group">
+                        <label for="foodType">Food Type</label>
+                        <select id="foodType" name="foodType" required>
+                            <option value="">Select food type</option>
+                            <option value="cooked">Cooked Food</option>
+                            <option value="packaged">Packaged Food</option>
+                            <option value="produce">Fresh Produce</option>
+                            <option value="bakery">Bakery Items</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" name="quantity" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="unit">Unit</label>
+                            <select id="unit" name="unit" required>
+                                <option value="meals">Meals</option>
+                                <option value="kg">Kilograms</option>
+                                <option value="boxes">Boxes</option>
+                                <option value="packets">Packets</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bestBefore">Best Before</label>
+                        <input type="date" id="bestBefore" name="bestBefore" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Pickup Location</label>
+                        <div class="location-input">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <input type="text" id="location" name="location" placeholder="Your current location" required>
+                            <button type="button" class="btn-use-current">Use Current</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="photo">Add Photo</label>
+                        <div class="photo-upload">
+                            <input type="file" id="photo" name="photo" accept="image/*">
+                            <div class="upload-placeholder">
+                                <i class="fas fa-camera"></i>
+                                <p>Click to upload a photo</p>
+                            </div>
+                            <div class="preview-container" id="previewContainer"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" name="notes" placeholder="Any allergens, storage instructions, etc."></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" id="cancelDonation">Cancel</button>
+                        <button type="submit" class="btn-primary">Submit Donation</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Donation Successful!</h2>
+                <button class="close-modal" id="closeSuccessModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Thank You For Your Donation!</h3>
+                <p>Your generous contribution has been recorded. We'll notify you once it's picked up.</p>
+                
+                <div class="new-badge">
+                    <div class="badge-icon gold">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="badge-info">
+                        <h4>New Badge Unlocked!</h4>
+                        <p>Generous Helper</p>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button class="btn-primary" id="backToDashboard">Back to Dashboard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav">
+        <a href="#dashboard" class="active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#donations">
+            <i class="fas fa-box"></i>
+            <span>Donations</span>
+        </a>
+        <a href="#" id="mobileDonateBtnContainer">
+            <div class="donate-circle" id="mobileDonateBtn">
+                <i class="fas fa-plus"></i>
+            </div>
+        </a>
+        <a href="#requirements">
+            <i class="fas fa-list"></i>
+            <span>Requests</span>
+        </a>
+        <a href="#profile">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+
+    <script src="./assets/js/donor.js"></script>
+    <script>
+      // Menu toggle for sidebar
+      document.getElementById('menuToggle').addEventListener('click', function() {
+        document.getElementById('sidebar').classList.toggle('open');
+      });
+    </script>
+</body>
+</html>
