@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combined Donation Dashboard</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Your main CSS -->
+    <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
+
+      <!-- Internal Responsive CSS -->
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #f1f5f9;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --gray: #6b7280;
+            --white: #fff;
+            --shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        html, body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: #f7f9fc;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px 16px 90px 16px;
+        }
+        .sidebar {
+            width: 250px;
+            background: #1e3a8a;
+            color: white;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            z-index: 2000;
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+        }
+        .sidebar.open {
+            transform: translateX(0);
+        }
+        .sidebar .logo {
+            width: 100%;
+            max-width: 140px;
+            margin-bottom: 1rem;
+        }
+        .sidebar-header h1 {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .sidebar .user-info {
+            text-align: center;
+        }
+        .sidebar .user-avatar {
+            width: 60px;
+            border-radius: 50%;
+            margin: 10px auto;
+        }
+        .sidebar .user-role {
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+        .sidebar-nav ul {
+            list-style: none;
+        }
+        .sidebar-nav li {
+            margin: 10px 0;
+        }
+        .sidebar-nav a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        .sidebar-nav .active a {
+            background: #3749a3;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        /* Overlay for sidebar */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1999;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(30, 41, 59, 0.18);
+        }
+        .sidebar-overlay.active {
+            display: block;
+        }
+        /* Top Navigation */
+        .top-nav {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--primary);
+            cursor: pointer;
+            z-index: 2001;
+        }
+        .top-nav-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .notification-icon {
+            position: relative;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        .notification-badge {
+            position: absolute;
+            top: -7px;
+            right: -7px;
+            background: var(--danger);
+            color: var(--white);
+            font-size: 0.7rem;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-weight: 600;
+        }
+        .user-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            cursor: pointer;
+        }
+        .user-avatar-small {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        .impact-stats {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            flex: 1 1 180px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            padding: 18px 20px;
+            min-width: 180px;
+            margin-bottom: 10px;
+        }
+        .stat-icon {
+            font-size: 1.7rem;
+            padding: 13px;
+            border-radius: 50%;
+            color: var(--white);
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stat-icon.blue { background: #3b82f6; }
+        .stat-icon.green { background: #10b981; }
+        .stat-icon.purple { background: #8b5cf6; }
+        .stat-icon.orange { background: #f59e0b; }
+        .stat-content h3 {
+            font-size: 1.4rem;
+            margin: 0 0 2px 0;
+        }
+        .donate-box {
+            background: #e0f2fe;
+            border-radius: 10px;
+            padding: 22px 18px;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .donate-btn {
+            margin-top: 12px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 11px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .donate-btn:hover {
+            background: #1742a7;
+        }
+        .section-container {
+            margin-top: 32px;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 13px;
+        }
+        .view-all {
+            font-size: 0.95rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .donations-list, .requirements-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .donation-card, .requirement-card {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 18px;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        .donation-img img, .requirement-org img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 6px;
+        }
+        .donation-img {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .status {
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            color: var(--white);
+        }
+        .status-active { background: var(--success); }
+        .status-in-transit { background: var(--accent); color: #fff; }
+        .status-delivered { background: var(--primary); }
+        .donation-details h3, .requirement-org h3 {
+            margin: 0 0 4px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .donation-details p, .requirement-details p {
+            margin: 0 0 2px 0;
+            font-size: 0.97rem;
+            color: var(--gray);
+        }
+        .donation-actions, .requirement-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+        .btn-outline, .btn-primary, .btn-secondary {
+            border: none;
+            border-radius: 5px;
+            padding: 8px 18px;
+            font-size: 0.97rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background: #1742a7;
+        }
+        .btn-secondary {
+            background: var(--gray);
+            color: var(--white);
+        }
+        .btn-secondary:hover {
+            background: #374151;
+        }
+        .urgent {
+            color: var(--danger);
+            font-weight: 700;
+        }
+        .badges-container {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        .badge-card {
+            background: var(--white);
+            padding: 15px 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 140px;
+            box-shadow: var(--shadow);
+            margin-bottom: 10px;
+        }
+        .badge-icon {
+            font-size: 1.6rem;
+            padding: 12px;
+            border-radius: 50%;
+            color: var(--white);
+            margin-bottom: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .badge-icon.gold { background: #f59e0b; }
+        .badge-icon.silver { background: #9ca3af; }
+        .badge-icon.bronze { background: #d97706; }
+        .main-footer {
+            text-align: center;
+            margin-top: 48px;
+            padding: 18px 0 0 0;
+            font-size: 0.97rem;
+            color: #888;
+        }
+        .footer-links {
+            margin-top: 7px;
+        }
+        .footer-links a {
+            margin: 0 10px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.97rem;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background: rgba(30, 41, 59, 0.12);
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            width: 95%;
+            max-width: 420px;
+            padding: 0;
+            animation: modalIn 0.2s;
+        }
+        @keyframes modalIn {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 22px 10px 22px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .modal-header h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--gray);
+            cursor: pointer;
+        }
+        .modal-body {
+            padding: 18px 22px 22px 22px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-row {
+            display: flex;
+            gap: 12px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        label {
+            display: block;
+            font-size: 0.97rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"], input[type="date"], select, textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1.2px solid #d1d5db;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 2px;
+            background: #f9fafb;
+        }
+        textarea {
+            min-height: 60px;
+            resize: vertical;
+        }
+        .location-input {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .location-input i {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        .btn-use-current {
+            background: var(--secondary);
+            color: var(--primary);
+            border: none;
+            border-radius: 5px;
+            padding: 6px 12px;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        .btn-use-current:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .photo-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .photo-upload input[type="file"] {
+            display: none;
+        }
+        .upload-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #d1d5db;
+            border-radius: 8px;
+            padding: 18px 0;
+            width: 100%;
+            cursor: pointer;
+            color: var(--gray);
+            font-size: 1.2rem;
+        }
+        .upload-placeholder:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .preview-container img {
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 8px;
+            margin-top: 8px;
+        }
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 18px;
+        }
+        .success-icon {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 10px;
+        }
+        .new-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 18px 0 10px 0;
+            justify-content: center;
+        }
+        .badge-info h4 {
+            margin: 0 0 2px 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .badge-info p {
+            margin: 0;
+            font-size: 0.97rem;
+            color: var(--gray);
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(30, 41, 59, 0.18);
+        }
+        .overlay.active { display: block; }
+        /* Mobile Bottom Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            background: var(--white);
+            box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+            z-index: 1003;
+            height: 62px;
+            border-radius: 18px 18px 0 0;
+            padding: 0 8px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .mobile-nav a {
+            flex: 1;
+            text-align: center;
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: color 0.2s;
+        }
+        .mobile-nav a.active, .mobile-nav a:hover {
+            color: var(--primary);
+        }
+        .donate-circle {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-top: -18px;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.18);
+            border: 3px solid var(--white);
+        }
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .main-content {
+                max-width: 100%;
+                padding: 18px 6px 90px 6px;
+            }
+            .impact-stats {
+                gap: 10px;
+            }
+            .stat-card {
+                min-width: 140px;
+                padding: 12px 10px;
+            }
+            .badge-card {
+                width: 110px;
+                padding: 10px 5px;
+            }
+        }
+        @media (max-width: 700px) {
+            .impact-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .stat-card {
+                width: 100%;
+                min-width: 0;
+            }
+            .badges-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .badge-card {
+                width: 100%;
+            }
+            .main-footer {
+                font-size: 0.92rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 10px 2px 80px 2px;
+            }
+            .top-nav {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 8px;
+            }
+            .page-title {
+                font-size: 1.3rem;
+            }
+            .donation-card, .requirement-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 10px 8px;
+            }
+            .donation-img img, .requirement-org img {
+                width: 54px;
+                height: 54px;
+            }
+            .modal-content {
+                max-width: 98vw;
+                padding: 0;
+            }
+        }
+        @media (max-width: 500px) {
+            .main-content {
+                padding-bottom: 70px;
+            }
+            .mobile-nav {
+                display: flex;
+            }
+            .main-footer {
+                margin-bottom: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<main class="main-content">
+
+    <!-- Top Navigation -->
+    <header class="top-nav">
+        <button id="menuToggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
+        <div class="top-nav-right">
+            <div class="notification-icon">
+                <i class="fas fa-bell"></i><span class="notification-badge">3</span>
+            </div>
+            <div class="user-dropdown">
+                <img src="./assets/images/user-avatar.png" alt="User Avatar" class="user-avatar-small">
+                <span>John Donor</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="content-wrapper">
+        <h1 class="page-title">Donor Dashboard</h1>
+
+        <!-- Impact Stats -->
+        <div class="impact-stats">
+            <div class="stat-card">
+                <div class="stat-icon blue"><i class="fas fa-box"></i></div>
+                <div class="stat-content"><h3>12</h3><p>Food Donations</p></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon green"><i class="fas fa-tshirt"></i></div>
+                <div class="stat-content"><h3>7</h3><p>Clothes Donations</p></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon purple"><i class="fas fa-building"></i></div>
+                <div class="stat-content"><h3>8</h3><p>NGOs Supported</p></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon orange"><i class="fas fa-award"></i></div>
+                <div class="stat-content"><h3>3</h3><p>Badges Earned</p></div>
+            </div>
+        </div>
+
+        <!-- Donate Now Buttons -->
+        <div class="donate-box">
+            <h2>Want to make a difference today?</h2>
+            <button class="donate-btn" id="donateFoodBtn"><i class="fas fa-heart"></i> Donate Food</button>
+            <button class="donate-btn" id="donateClothesBtn"><i class="fas fa-tshirt"></i> Donate Clothes</button>
+        </div>
+
+        <!-- Recent Food Donations -->
+        <div class="section-container">
+            <div class="section-header"><h2>Recent Food Donations</h2></div>
+            <div class="donations-list">
+                <!-- Your existing food donation cards here -->
+            </div>
+        </div>
+
+        <!-- Recent Clothes Donations -->
+        <div class="section-container">
+            <div class="section-header"><h2>Recent Clothes Donations</h2></div>
+            <div class="donations-list">
+                <div class="donation-card">
+                    <div class="donation-img">
+                        <img src="./assets/images/clothes1.jpg" alt="Clothes Donation">
+                        <span class="status status-active">Active</span>
+                    </div>
+                    <div class="donation-details">
+                        <h3>Winter Jackets</h3>
+                        <p><i class="fas fa-tshirt"></i> 4 jackets</p>
+                        <p><i class="fas fa-map-marker-alt"></i> South Area</p>
+                        <p><i class="fas fa-clock"></i> 1 hour ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nearby Food Requests -->
+        <div class="section-container">
+            <div class="section-header"><h2>Nearby Food Requests</h2></div>
+            <div class="requirements-list">
+                <!-- Your existing food requirements here -->
+            </div>
+        </div>
+
+        <!-- Nearby Clothes Requests -->
+        <div class="section-container">
+            <div class="section-header"><h2>Nearby Clothes Requests</h2></div>
+            <div class="requirements-list">
+                <div class="requirement-card">
+                    <div class="requirement-org">
+                        <img src="./assets/images/ngo1.jpg" alt="NGO Logo">
+                        <h3>Warm Hearts NGO</h3>
+                    </div>
+                    <div class="requirement-details">
+                        <p><i class="fas fa-tshirt"></i> Need winter clothing</p>
+                        <p><i class="fas fa-users"></i> For 15 people</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 2.3 km away</p>
+                        <p><i class="fas fa-exclamation-circle"></i> <span class="urgent">Urgent</span></p>
+                    </div>
+                    <div class="requirement-actions">
+                        <button class="btn-primary"><i class="fas fa-reply"></i> Respond</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Badges Section -->
+        <div class="section-container">
+            <div class="section-header"><h2>Your Badges</h2></div>
+            <div class="badges-container">
+                <!-- Your existing badge cards here -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>&copy; 2025 FoodForNeedy. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+        </div>
+    </footer>
+</main>
+
+<!-- Food Donation Modal -->
+<div class="modal" id="foodDonationModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Donate Food</h2><button class="close-modal" id="closeFoodModal"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <!-- Your existing food donation form here -->
+        </div>
+    </div>
+</div>
+
+<!-- Clothes Donation Modal -->
+<!-- <div class="modal" id="clothesDonationModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Donate Clothes</h2><button class="close-modal" id="closeClothesModal"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <form id="clothesDonationForm">
+                <div class="form-group">
+                    <label for="clothesType">Clothing Type</label>
+                    <select id="clothesType" name="clothesType" required>
+                        <option value="">Select clothing type</option>
+                        <option value="shirts">Shirts</option>
+                        <option value="pants">Pants</option>
+                        <option value="jackets">Jackets</option>
+                        <option value="sarees">Sarees</option>
+                        <option value="blankets">Blankets</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="clothesQuantity">Quantity</label>
+                    <input type="number" id="clothesQuantity" name="clothesQuantity" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="clothesLocation">Pickup Location</label>
+                    <input type="text" id="clothesLocation" name="clothesLocation" placeholder="Your current location" required>
+                </div>
+                <div class="form-group">
+                    <label for="clothesPhoto">Add Photo</label>
+                    <input type="file" id="clothesPhoto" name="clothesPhoto" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="clothesNotes">Additional Notes</label>
+                    <textarea id="clothesNotes" name="clothesNotes" placeholder="Size info, conditions, etc."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="cancelClothesDonation">Cancel</button>
+                    <button type="submit" class="btn-primary">Submit Donation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
+
+<div class="modal" id="clothesDonationModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Donate Clothes</h2>
+            <button class="close-modal" id="closeClothesModal"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <form id="clothesDonationForm">
+                <div class="form-group">
+                    <label for="clothingType">Clothing Type</label>
+                    <select id="clothingType" name="clothingType" required>
+                        <option value="">Select type</option>
+                        <option value="shirts">Shirts/T-Shirts</option>
+                        <option value="pants">Pants/Jeans</option>
+                        <option value="jackets">Jackets</option>
+                        <option value="blankets">Blankets</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="size">Size (Optional)</label>
+                    <input type="text" id="size" name="size" placeholder="M, L, XL, etc.">
+                </div>
+                <div class="form-group">
+                    <label for="clothesQuantity">Quantity</label>
+                    <input type="number" id="clothesQuantity" name="clothesQuantity" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="condition">Condition</label>
+                    <select id="condition" name="condition" required>
+                        <option value="new">New</option>
+                        <option value="gently-used">Gently Used</option>
+                        <option value="used">Used</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pickupLocation">Pickup Location</label>
+                    <input type="text" id="pickupLocation" name="pickupLocation" required>
+                </div>
+                <div class="form-group">
+                    <label for="clothesNotes">Additional Notes</label>
+                    <textarea id="clothesNotes" name="clothesNotes" placeholder="Color, Brand, or Notes"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" id="cancelClothesDonation">Cancel</button>
+                    <button type="submit" class="btn-primary">Submit Donation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="dashboard.js"></script> <!-- Your main JS foodDonationModal-->
+<script>
+    document.getElementById('donateClothesBtn').addEventListener('click', () => {
+    document.getElementById('clothesDonationModal').style.display = 'block';
+});
+document.getElementById('closeClothesModal').addEventListener('click', () => {
+    document.getElementById('clothesDonationModal').style.display = 'none';
+});
+
+
+
+   document.getElementById('donateFoodBtn').addEventListener('click', () => {
+    document.getElementById('foodDonationModal').style.display = 'block';
+});
+document.getElementById('donateFoodBtn').addEventListener('click', () => {
+    document.getElementById('foodDonationModal').style.display = 'none';
+});
+document.getElementById('cancelClothesDonation').addEventListener('click', () => {
+    document.getElementById('clothesDonationModal').style.display = 'none';
+});
+document.getElementById('clothesDonationForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    alert('Clothes donation submitted successfully!');
+    document.getElementById('clothesDonationModal').style.display = 'none';
+});
+</script>
+</body>
+</html>
